@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { fromZonedTime, toZonedTime, formatInTimeZone } from 'date-fns-tz';
-import AuthBar from '@/components/AuthBar';
+import AuthBar from '../components/AuthBar';
 
 type Barber = { id: string; name: string };
 type Service = { id: string; name: string; duration_minutes: number; price_cents: number };
