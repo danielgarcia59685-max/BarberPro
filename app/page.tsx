@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { fromZonedTime, toZonedTime, formatInTimeZone } from 'date-fns-tz';
+import AuthBar from '@/components/AuthBar';
 
 type Barber = { id: string; name: string };
 type Service = { id: string; name: string; duration_minutes: number; price_cents: number };
@@ -126,7 +127,11 @@ export default function Page() {
   if (loading) return <main style={{ padding: 24 }}>Carregando…</main>;
 
   return (
-    <main style={{ padding: 24, display: 'grid', gap: 24, gridTemplateColumns: '1fr 1fr' }}>
+    <>
+      <header style={{ display: 'flex', justifyContent: 'flex-end', padding: 24 }}>
+        <AuthBar />
+      </header>
+      <main style={{ padding: 24, display: 'grid', gap: 24, gridTemplateColumns: '1fr 1fr' }}>
       <section>
         <h2>Agendar</h2>
         <div style={{ display: 'grid', gap: 12, maxWidth: 460, marginTop: 12 }}>
@@ -183,5 +188,6 @@ export default function Page() {
         </ul>
       </section>
     </main>
+    </>
   );
 }
